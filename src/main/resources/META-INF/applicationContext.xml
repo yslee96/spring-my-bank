@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="account1" class="com.example.mybank.MyAccount">
+        <property name ="userName" value="Joy" />
+        <property name ="balance" value="0" />
+    </bean>
+    <bean id="account2" class="com.example.mybank.MyAccount">
+        <property name ="userName" value="Wendy" />
+        <property name ="balance" value="0" />
+    </bean>
+    <bean id="bank1" class="com.example.mybank.MyBank">
+        <property name ="userAccount" ref="account1" />
+    </bean>
+    <bean id="bank2" class="com.example.mybank.MyBank">
+        <property name ="userAccount" ref="account2" />
+    </bean>
+
+</beans>
