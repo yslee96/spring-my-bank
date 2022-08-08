@@ -53,6 +53,7 @@ public class MyBank implements BaseBank{
     public Boolean remit(String sender, int money, BaseBank receiveBank, String receiver){
         if(this.hasAccount(sender) && this.withdraw(sender, money)){
             if(receiveBank.deposit(receiver, money)) {
+                System.out.println("Transmission Success");
                 return Boolean.TRUE;
             }
             System.out.println("Invalid Transmission : Receiving Failure");

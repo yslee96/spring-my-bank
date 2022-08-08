@@ -18,7 +18,7 @@ public class MyAccount implements BaseAccount {
 
     @Override
     public int getBalance() {
-        return balance;
+        return this.balance;
     }
 
     @Override
