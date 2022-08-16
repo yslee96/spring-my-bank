@@ -2,8 +2,8 @@ package com.example.mybank.base;
 
 import com.example.mybank.MyAccount;
 
-public interface BaseBank{
-    String setUserAccount(BaseAccount userAccount);
+public interface BaseBank<T>{
+    void setUserAccount(T userAccount);
     Boolean hasAccount(String name);
     Boolean printAccountInfo(String name);
     Boolean deposit(String name, int money);

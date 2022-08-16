@@ -15,7 +15,7 @@ public class MyBankApplication {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext(
                 "classpath:META-INF/applicationContext.xml");
-
+        /*
         BaseBank bank1 = (BaseBank) context.getBean("bank1");
         BaseBank bank2 = (BaseBank) context.getBean("bank2");
         BaseAccount account1 = (BaseAccount) context.getBean("account1");
@@ -75,7 +75,13 @@ public class MyBankApplication {
         System.out.println();
 
         //SpringApplication.run(MyBankApplication.class, args);
-
+        */
+        MyBank myBank = (MyBank)context.getBean("myBank");
+        MyAccount account1 = (MyAccount)context.getBean("JoyAccount");
+        account1.printInfo();
+        myBank.printAccountInfo("Joy");
+        myBank.printAccountInfo("Karina");
+        myBank.printBranchInfo();
     }
 
 }

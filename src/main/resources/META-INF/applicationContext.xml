@@ -4,20 +4,29 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
-
-    <bean id="account1" class="com.example.mybank.MyAccount">
-        <property name ="userName" value="Joy" />
-        <property name ="balance" value="0" />
+    <bean id="myBank" class="com.example.mybank.MyBank">
+        <property name="userAccount">
+            <util:map>
+                <entry key="Joy" value-ref="JoyAccount"/>
+                <entry key="Karina" >
+                    <bean class="com.example.mybank.AccountFactory" factory-method="accountFactoryMethod">
+                        <constructor-arg index="0" value="Karina"/>
+                        <constructor-arg index="1" value="20000"/>
+                        <constructor-arg index="2" value="Busan"/>
+                    </bean>
+                </entry>
+            </util:map>
+        </property>
+        <property name="branches">
+            <util:set>
+                <value>Seoul</value>
+                <value>Busan</value>
+            </util:set>
+        </property>
     </bean>
-    <bean id="account2" class="com.example.mybank.MyAccount">
-        <property name ="userName" value="Wendy" />
-        <property name ="balance" value="0" />
+    <bean id="JoyAccount" class="com.example.mybank.AccountFactory" factory-method="accountFactoryMethod">
+        <constructor-arg index="0" value="Joy"/>
+        <constructor-arg index="1" value="10000"/>
+        <constructor-arg index="2" value="Seoul"/>
     </bean>
-    <bean id="bank1" class="com.example.mybank.MyBank">
-        <property name ="userAccount" ref="account1" />
-    </bean>
-    <bean id="bank2" class="com.example.mybank.MyBank">
-        <property name ="userAccount" ref="account2" />
-    </bean>
-
 </beans>
