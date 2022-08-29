@@ -25,6 +25,18 @@ public class MyBank implements BaseBank<Map<String, MyAccount>>{
             }
         }
     }
+    public void replacedPrintBranchInfo(){
+        System.out.printf("Method has been Replaced\n");
+        System.out.printf("* BRANCH LIST *\n");
+        if(this.branches ==null){
+            System.out.printf("No Branch Exists\n");
+        }
+        else {
+            for (String branch : branches) {
+                System.out.printf("* %s\n", branch);
+            }
+        }
+    }
     public boolean hasBranch(String branchName){ return this.branches.contains(branchName); }
     @Override
     public void setUserAccount(Map<String, MyAccount> userAccounts) {

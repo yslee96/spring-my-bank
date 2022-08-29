@@ -4,7 +4,12 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="ReplacingMethod" class ="com.example.mybank.ReplacingPrintBranches"/>
+    <bean id ="myBankLookup" class = "com.example.mybank.MyBankLookup">
+        <lookup-method bean = "myBank" name = "getMyBankBean"/>
+    </bean>
     <bean id="myBank" class="com.example.mybank.MyBank">
+        <replaced-method name="printBranchInfo" replacer="ReplacingMethod"/>
         <property name="userAccount">
             <util:map>
                 <entry key="Joy" value-ref="JoyAccount"/>

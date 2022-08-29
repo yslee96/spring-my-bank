@@ -1,13 +1,10 @@
 package com.example.mybank;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.example.mybank.base.BaseBank;
-import com.example.mybank.base.BaseAccount;
 @SpringBootApplication
 public class MyBankApplication {
     private static Logger logger = LogManager.getLogger(MyBankApplication.class);
@@ -76,12 +73,13 @@ public class MyBankApplication {
 
         //SpringApplication.run(MyBankApplication.class, args);
         */
-        MyBank myBank = (MyBank)context.getBean("myBank");
-        MyAccount account1 = (MyAccount)context.getBean("JoyAccount");
+        //MyBank myBank = (MyBank)context.getBean("myBank");
+        MyBankLookup myBankLookup = (MyBankLookup) context.getBean("myBankLookup");
+        MyBank myBank = (MyBank) myBankLookup.getMyBankBean();
+        MyAccount account1 = (MyAccount) context.getBean("JoyAccount");
         account1.printInfo();
         myBank.printAccountInfo("Joy");
         myBank.printAccountInfo("Karina");
         myBank.printBranchInfo();
     }
-
 }
