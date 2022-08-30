@@ -8,10 +8,14 @@ import java.util.Map;
 import java.util.Set;
 
 public class MyBank implements BaseBank<Map<String, MyAccount>>{
-
+    public void initializeMyBank(){
+        System.out.printf("MyBank is now open!\n");
+    }
+    public void releaseMyBank(){
+        System.out.printf("MyBank has been shut down.\n");
+    }
     private Map<String, MyAccount> userAccounts = null;
     private Set<String> branches = new HashSet<>();
-
     public void setBranches(Set<String> branches) { this.branches = branches; }
 
     public void printBranchInfo(){

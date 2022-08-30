@@ -3,6 +3,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @SpringBootApplication
@@ -10,8 +11,9 @@ public class MyBankApplication {
     private static Logger logger = LogManager.getLogger(MyBankApplication.class);
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext(
+        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(
                 "classpath:META-INF/applicationContext.xml");
+        context.registerShutdownHook();
         /*
         BaseBank bank1 = (BaseBank) context.getBean("bank1");
         BaseBank bank2 = (BaseBank) context.getBean("bank2");

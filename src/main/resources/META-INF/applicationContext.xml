@@ -8,7 +8,8 @@
     <bean id ="myBankLookup" class = "com.example.mybank.MyBankLookup">
         <lookup-method bean = "myBank" name = "getMyBankBean"/>
     </bean>
-    <bean id="myBank" class="com.example.mybank.MyBank">
+    <bean id="myBank" class="com.example.mybank.MyBank"
+          init-method="initializeMyBank" destroy-method="releaseMyBank">
         <replaced-method name="printBranchInfo" replacer="ReplacingMethod"/>
         <property name="userAccount">
             <util:map>
